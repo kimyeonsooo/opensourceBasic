@@ -17,6 +17,13 @@ def highlight_face(net, frame, conf_threshold=0.7):
     face_boxes = []
     for i in range(detections.shape[2]):
         confidence = detections[0, 0, i, 2]
+        if confidence > conf_threshold:
+            x1 = int(detections[0, 0, i, 3]*frame_width)
+            y1 = int(detections[0, 0, i, 4]*frame_height)
+            x2 = int(detections[0, 0, i, 5]*frame_width)
+            y2 = int(detections[0, 0, i, 6]*frame_height)
+            cv2.rectangle(frame_opencv_dnn, (x1, y1), (x2, y2),
+                          (0, 255, 0), int(round(frame_height/150)), 8)
 
 def process_frame(face_net, age_net, gender_net, frame, padding=20):
     result_img, face_boxes = highlight_face(face_net, frame)
