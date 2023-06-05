@@ -12,3 +12,8 @@ def highlight_face(net, frame, conf_threshold=0.7):
     frame_width = frame_opencv_dnn.shape[1]
     blob = cv2.dnn.blobFromImage(frame_opencv_dnn, 1.0, (300, 300), [
                                  104, 117, 123], True, False)
+    net.setInput(blob)
+
+def process_frame(face_net, age_net, gender_net, frame, padding=20):
+    result_img, face_boxes = highlight_face(face_net, frame)
+    data = []
