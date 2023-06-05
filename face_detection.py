@@ -22,9 +22,14 @@ def highlight_face(net, frame, conf_threshold=0.7):
             y1 = int(detections[0, 0, i, 4]*frame_height)
             x2 = int(detections[0, 0, i, 5]*frame_width)
             y2 = int(detections[0, 0, i, 6]*frame_height)
+            face_boxes.append([x1, y1, x2, y2])
             cv2.rectangle(frame_opencv_dnn, (x1, y1), (x2, y2),
                           (0, 255, 0), int(round(frame_height/150)), 8)
+            return frame_opencv_dnn
 
 def process_frame(face_net, age_net, gender_net, frame, padding=20):
     result_img, face_boxes = highlight_face(face_net, frame)
     data = []
+
+    if not face_boxes:
+        print("No face detected")
