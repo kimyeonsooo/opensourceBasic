@@ -35,4 +35,8 @@ def process_frame(face_net, age_net, gender_net, frame, padding=20):
         print("No face detected")
 
     for face_box in face_boxes:
-        face = frame[max(0, face_box[1]-padding)]
+        face = frame[max(0, face_box[1]-padding):
+                     min(face_box[3]+padding, frame.shape[0]-1),
+                     max(0, face_box[0]-padding)]
+        
+        blob = cv2.dnn.blobFromImage()
