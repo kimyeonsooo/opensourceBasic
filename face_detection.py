@@ -39,4 +39,8 @@ def process_frame(face_net, age_net, gender_net, frame, padding=20):
                      min(face_box[3]+padding, frame.shape[0]-1),
                      max(0, face_box[0]-padding)]
         
-        blob = cv2.dnn.blobFromImage()
+        blob = cv2.dnn.blobFromImage(
+            face, 1.0, (227, 227), MODEL_MEAN_VALUES, swapRB=False)
+        gender_net.setInput(blob)
+        gender_preds = gender_net.forward()
+        gender = gender_list[gender_preds[0].argmax()]
