@@ -44,3 +44,8 @@ def process_frame(face_net, age_net, gender_net, frame, padding=20):
         gender_net.setInput(blob)
         gender_preds = gender_net.forward()
         gender = gender_list[gender_preds[0].argmax()]
+
+        age.setInput(blob)
+        age_preds = age.forward()
+        age = age_list
+
