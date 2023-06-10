@@ -26,3 +26,7 @@ def highlight_face(net, frame, conf_threshold=0.7):
             cv2.rectangle(frame_opencv_dnn, (x1, y1), (x2, y2),
                           (0, 255, 0), int(round(frame_height/150)), 8)
     return frame_opencv_dnn, face_boxes
+
+def process_frame(face_net, age_net, gender_net, frame, padding=20):
+    result_img, face_boxes = highlight_face(face_net, frame)
+    data = []
