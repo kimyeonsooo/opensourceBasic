@@ -19,3 +19,6 @@ def highlight_face(net, frame, conf_threshold=0.7):
         confidence = detections[0, 0, i, 2]
         if confidence > conf_threshold:
             x1 = int(detections[0, 0, i, 3]*frame_width)
+            y1 = int(detections[0, 0, i, 4]*frame_height)
+            x2 = int(detections[0, 0, i, 5]*frame_width)
+            y2 = int(detections[0, 0, i, 6]*frame_height)
