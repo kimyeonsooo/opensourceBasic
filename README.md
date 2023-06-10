@@ -38,9 +38,14 @@ python <실행 파일명>
 `python main.py --image girl1.jpg`
 중단 방법: `Ctrl + C`
 
+## 사용 예제
+- ![image](https://github.com/kimyeonsooo/opensourceBasic/assets/82308315/495cdefa-3138-4879-af90-e1a040055bb1)
+- ![image](https://github.com/kimyeonsooo/opensourceBasic/assets/82308315/cc79c42f-e9d1-4a94-aea8-6e8e2e366ad6)
+
+
 ## 라이선스 및 연락처
 ### 라이선스
-
+MIT License
 
 ### 연락처
 - 손지연(2020039104), 김연수(2020039097)
