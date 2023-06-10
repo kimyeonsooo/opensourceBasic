@@ -49,3 +49,10 @@ def process_frame(face_net, age_net, gender_net, frame, padding=20):
         age_net.setInput(blob)
         age_preds = age_net.forward()
         age = age_list[age_preds[0].argmax()]
+
+        cv2.putText(result_img, f'{gender}, {age}', (
+            face_box[0], face_box[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv2.LINE_AA)
+
+        data.append((gender, age))
+
+    return cv2.cvtColor(result_img, cv2.COLOR_BGR2RGB), data
